@@ -13,19 +13,6 @@
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Internal Release Repository</name>
-            <url>http://your-nexus-or-artifactory-url/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Internal Snapshot Repository</name>
-            <url>http://your-nexus-or-artifactory-url/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -57,4 +44,13 @@
             </plugin>
         </plugins>
     </build>
+
+    <!-- Placed inside the pom.xml, correctly formatted -->
+<distributionManagement>
+        <repository>
+            <id>nexus-releases</id> 
+            <!-- Updated to match the private IP and default Nexus repository -->
+            <url>http://13.202.82.105:8081/repository/java-packages/</url>
+        </repository>
+    </distributionManagement>
 </project>
