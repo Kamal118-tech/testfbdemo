@@ -31,7 +31,7 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
+                <groupId>org.apache.npm</groupId> <!-- Keep your existing plugins here -->
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
@@ -45,12 +45,21 @@
         </plugins>
     </build>
 
-    <!-- Placed inside the pom.xml, correctly formatted -->
-<distributionManagement>
+    <distributionManagement>
         <repository>
-            <id>nexus-releases</id> 
-            <!-- Updated to match the private IP and default Nexus repository -->
+            <id>nexus-releases</id>
             <url>http://13.207.59.140:8081/repository/java-packages/</url>
         </repository>
     </distributionManagement>
+
+    <!-- Embedded Maven settings block with credentials -->
+    <settings>
+        <servers>
+            <server>
+                <id>nexus-releases</id>
+                <username>kamal</username>
+                <password>kamal</password>
+            </server>
+        </servers>
+    </settings>
 </project>
