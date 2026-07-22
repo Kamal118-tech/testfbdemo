@@ -46,11 +46,14 @@
             </plugin>
         </plugins>
     </build>
+<!-- 
     <distributionManagement>
         <repository>
             <id>nexus-releases</id> 
-            <!-- Updated to match the private IP and default Nexus repository -->
+
             <url>http://172.31.47.195:8081/repository/java-packages/</url>
         </repository>
     </distributionManagement>
+    
+-->
 </project>
