@@ -50,7 +50,7 @@
         <repository>
             <id>nexus-releases</id> 
             <!-- Updated to match the private IP and default Nexus repository -->
-            <url>http://13.202.82.105:8081/repository/java-packages/</url>
+            <url>http://13.207.59.140:8081/repository/java-packages/</url>
         </repository>
     </distributionManagement>
 </project>
