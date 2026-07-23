@@ -1,63 +1,32 @@
+@Library('mysharedlibrary') _
 pipeline{
     agent any
     tools{
-        maven 'maven3.9.16'
+        maven 'maven3.9.16',
         jdk 'java21'
     }
-    parameters{
-        booleanParam(name:'skip_process', defaultValue: false, description: 'skips specific process')
-    
 
-    }
-    stages{
-        stage('pull code from git hub'){
+    stages
+    {
+        stage('clean'){
             steps{
-                git branch:'main', url:'https://github.com/Kamal118-tech/testfbdemo.git'
+                mavenBuild('clean'')
+
             }
-        }
-        stage('clean package'){
-            steps{
-                sh 'mvn clean'
-            }
+         
         }
 
-        stage('compile package'){
+        stage('testing'){
             steps{
-                sh 'mvn compile'
+                mavenBuild('test')
+            }
+
+        }
+
+        stage('deploying'){
+            steps{
+                mavenBuild('deploy')
             }
         }
-        
-        stage('test package'){
-            when{
-                expression{!params.skip_process}
-            }
-            steps{
-                sh 'mvn test'
-            }
-        }  
-        stage('create package'){
-            steps{
-                sh 'mvn package'
-            }
-        }
-        
-        stage('verify package'){
-            steps{
-                sh 'mvn verify'
-            }
-        }
-        stage('install package'){
-            steps{
-                sh 'mvn install'
-            }
-        }
-        
-        stage('deploy package'){
-            steps{
-                sh 'mvn deploy'
-            }
-        }
-        
     }
-    
 }
