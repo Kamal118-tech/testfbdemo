@@ -1,30 +1,28 @@
-@Library('mysharedlibrary') _
-pipeline{
+@Library('your-shared-library-name') _
+
+pipeline {
     agent any
-    tools{
-        maven 'maven3.9.16',
+    
+    tools {
+        maven 'maven3.9.16'
         jdk 'java21'
     }
 
-    stages
-    {
-        stage('clean'){
-            steps{
-                mavenBuild('clean'')
-
+    stages {
+        stage('clean') {
+            steps {
+                mavenBuild('clean')
             }
-         
         }
 
-        stage('testing'){
-            steps{
+        stage('testing') {
+            steps {
                 mavenBuild('test')
             }
-
         }
 
-        stage('deploying'){
-            steps{
+        stage('deploying') {
+            steps {
                 mavenBuild('deploy')
             }
         }
