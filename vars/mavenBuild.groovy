@@ -23,6 +23,12 @@ def call(String action = 'package'){
             }
         }
 
+        default:
+            stage('maven build') {
+                sh "mvn ${action}"
+            }
+            break
+
       
     }
 }
