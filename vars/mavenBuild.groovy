@@ -1,34 +1,25 @@
-def call(String action = 'package'){
-    switch(action.toLowercase()){
+def call(String action = 'package') {
+    switch(action.toLowerCase()) {
         case 'clean':
-        stage('clean the package'){
-            steps{
-                sh 'mvn clean package'
+            stage('clean the package') {
+                sh 'mvn clean'
             }
-        }
-        break
-
+            break
         case 'test':
-        stage('tests the package'){
-            steps{
+            stage('test the package') {
                 sh 'mvn test'
             }
-        }
-        break
-
+            break
         case 'deploy':
-        stage('deploy the package'){
-            steps{
+            stage('deploy the package') {
                 sh 'mvn deploy'
+                echo 'deploy completed successfully'
             }
-        }
-
+            break
         default:
             stage('maven build') {
                 sh "mvn ${action}"
             }
             break
-
-      
     }
 }
